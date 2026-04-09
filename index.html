@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fiber Network MST</title>
+</head>
+<body>
+    <h2>Fiber Network Design (Kruskal MST)</h2>
+
+    <button onclick="run()">Run Sample</button>
+
+    <pre id="output"></pre>
+
+    <script>
+        async function run() {
+            let response = await fetch('/run', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    n: 4,
+                    edges: [
+                        [0,1,10],
+                        [0,2,6],
+                        [0,3,5],
+                        [1,3,15],
+                        [2,3,4]
+                    ]
+                })
+            });
+
+            let data = await response.json();
+            document.getElementById("output").innerText = data.output;
+        }
+    </script>
+</body>
+</html>
